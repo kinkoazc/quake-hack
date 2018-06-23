@@ -11,7 +11,7 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <MenuContext style={{paddingTop: StatusBar.currentHeight != null ? StatusBar.currentHeight : 31, backgroundColor: 'rgba(52, 52, 52, 0.8)git ' }}>
+            <MenuContext style={{paddingTop: StatusBar.currentHeight != null ? StatusBar.currentHeight : 31, backgroundColor: 'rgba(52, 52, 52, 0.8)' }}>
                 <TopNavigation/>
                 <View style={{
                     flex: 1,
