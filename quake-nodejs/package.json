@@ -1,0 +1,21 @@
+{
+  "name": "quake",
+  "version": "1.0.0",
+  "description": "",
+  "main": "srv.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "mongodb": "^3.0.10",
+    "pug": "^2.0.3",
+    "twilio": "^3.17.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
