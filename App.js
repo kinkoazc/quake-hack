@@ -25,7 +25,7 @@ const RootStack = createDrawerNavigator(
         Favorites: Favorites,
     },
     {
-        initialRouteName: 'Main',
+        initialRouteName: 'Favorites',
         headerMode: 'none'
     }
 );

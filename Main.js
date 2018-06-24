@@ -1,6 +1,6 @@
 import React from 'react';
 import {StatusBar, StyleSheet, Text, View} from 'react-native';
-import {PermissionsAndroid} from 'react-native';
+// import {PermissionsAndroid} from 'react-native';
 // import Menu, {MenuContext, MenuOptions, MenuOption, MenuTrigger} from 'react-native-menu';
 import {Button, Icon} from 'native-base';
 // import { SideBar } from './Sidebar.js';
@@ -16,30 +16,30 @@ export default class Main extends React.Component {
         headerTitle: 'Main',
     };
 
-    constructor() {
-        super();
-        this.requestCameraPermission();
+    constructor(props) {
+        super(props);
+        // this.requestCameraPermission();
     }
-
-    requestCameraPermission() {
-        try {
-            const granted = PermissionsAndroid.request(
-                PermissionsAndroid.PERMISSIONS.READ_CONTACTS,
-                {
-                    'title': 'Cool Photo App Camera Permission',
-                    'message': 'Cool Photo App needs access to your camera ' +
-                    'so you can take awesome pictures.'
-                }
-            );
-            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-                console.log("You can use the camera")
-            } else {
-                console.log("Camera permission denied")
-            }
-        } catch (err) {
-            console.warn(err)
-        }
-    }
+    //
+    // requestCameraPermission() {
+    //     try {
+    //         const granted = PermissionsAndroid.request(
+    //             PermissionsAndroid.PERMISSIONS.READ_CONTACTS,
+    //             {
+    //                 'title': 'Cool Photo App Camera Permission',
+    //                 'message': 'Cool Photo App needs access to your camera ' +
+    //                 'so you can take awesome pictures.'
+    //             }
+    //         );
+    //         if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+    //             console.log("You can use the camera")
+    //         } else {
+    //             console.log("Camera permission denied")
+    //         }
+    //     } catch (err) {
+    //         console.warn(err)
+    //     }
+    // }
 
     closeDrawer = () => {
         // this.drawer._root.close()
@@ -58,7 +58,7 @@ export default class Main extends React.Component {
                 // justifyContent: 'center',
                 // alignItems: 'center',
                 marginTop: StatusBar.currentHeight,
-                backgroundColor: 'red'
+                backgroundColor: 'white'
             }}>
                 <Button onPress={() => this.openDrawer()} style={{top: 0}}>
                     <Icon name="reorder" style={{fontSize: 40}}/>
