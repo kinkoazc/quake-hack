@@ -33,9 +33,6 @@
         var bounds = new google.maps.LatLngBounds();
         var mapOptions = { mapTypeId: google.maps.MapTypeId.ROADMAP };
         var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-       // var loc = new google.maps.LatLng("23", "45")
-       // bounds.extend(loc)
-       // addMarker(loc, "alalala", map)
         <% data.forEach(function(person) { %>
             var loc = new google.maps.LatLng(<%= person[1] %>, <%= person[2] %>)
             bounds.extend(loc)
