@@ -1,0 +1,14 @@
+SEND
+~set your CNP/name/phone no./email/etc.
+k-get/store chosen contacts
+-listen for notif from server
+[BEACN
+ -activate beac]
+-get location
+-vibrate on composing SMS
+-send to chosen contacts(SMS/WS)
+-receive notif to tell if you're ok
+-reply with SMS/WS
+
+BEACN
+-search for beac
