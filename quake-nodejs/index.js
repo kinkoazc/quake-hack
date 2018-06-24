@@ -11,23 +11,29 @@ app.use(bodyParser.json())
 app.set('views', './views')
 app.set('view engine', 'ejs')
 
-const positions = []
+const data = [
+    ['0741111111', 44.4368, 26.1025],
+    ['0742222222', 44.4568, 26.1039],
+    ['0743333333', 44.4668, 26.1135],
+    ['0744444444', 44.4768, 26.1224],
+    ['0745555555', 44.4868, 26.1312],
+    ['0746666666', 44.4968, 26.1434],
+    ['0747777777', 44.4598, 26.1511],
+    ['0748888888', 44.4548, 26.1601]
+]
 
 app.get('/', (req, res) => {
-	res.render('index')
+	res.render('index', { data })
 })
 
 app.post('/', (req, res) => {
-	let data = {
-		messageSID: req.body.MessageSid,
-		from: req.body.From,
-		body: req.body.Body
-	}
-	const loc = new URL(data.body).searchParams.get('query').split(",")
+	const loc = new URL(req.body.Body).searchParams.get('query').split(",")
 	const lat = loc[0]
-	const lon = loc[1]
-	positions.push({lat, lon})
-	console.log(JSON.stringify(positions, null, 2))
+	const lng = loc[1]
+	data.push([
+        req.body.From, lat, lng
+    ])
+    console.log(JSON.stringify(data, null, 2))
 	res.sendStatus(200)
 })
 
