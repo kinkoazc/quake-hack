@@ -19,47 +19,36 @@
     <div id="map"></div>
     <script>
 
-      function initMap() {
-
-        var bucharestCityCenter = {lat: 44.4268, lng: 26.1025};
-
-        var personsCoords =[
-            ['0741111111', 44.4368, 26.1025],
-            ['0742222222', 44.4568, 26.1039],
-            ['0743333333', 44.4668, 26.1135],
-            ['0744444444', 44.4768, 26.1224],
-            ['0745555555', 44.4868, 26.1312],
-            ['0746666666', 44.4968, 26.1434],
-            ['0747777777', 44.4598, 26.1511],
-            ['0748888888', 44.4548, 26.1601]
-        ];
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12,
-          center: bucharestCityCenter,
-            //mapTypeId: 'satellite'
+      function addMarker(loc, title, map) {
+        var marker = new google.maps.Marker({
+            position: loc,
+            map: map,
+            title: title,
+            animation: google.maps.Animation.DROP,
+            icon: 'http://maps.google.com/mapfiles/ms/icons/red.png',
         });
+      }
 
+      function initMap() {
+        var bounds = new google.maps.LatLngBounds();
+        var mapOptions = { mapTypeId: google.maps.MapTypeId.ROADMAP };
+        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+       // var loc = new google.maps.LatLng("23", "45")
+       // bounds.extend(loc)
+       // addMarker(loc, "alalala", map)
+        <% data.forEach(function(person) { %>
+            var loc = new google.maps.LatLng(<%= person[1] %>, <%= person[2] %>)
+            bounds.extend(loc)
+            addMarker(loc, "<%= person[0] %>", map)
+        <% }) %>
 
-        for (var i = 0; i < personsCoords.length; i++) {
-            var person = personsCoords[i];
-            var mlabel = (i + 1).toString();
-            var marker = new google.maps.Marker({
-                position: {lat: person[1], lng: person[2]},
-                map: map,
-                title: person[0],
-                label: mlabel,
-                animation: google.maps.Animation.DROP,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/pink.png',
-            });
-        }
-
+        map.fitBounds(bounds);
+        map.panToBounds(bounds); 
       }
     </script>
 
-    // for OUR_API_KEY -> check the gdoc
     <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=OUR_API_KEY&callback=initMap">
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYMZ-zHcKvq2Lie22Rh2vUmrJ61Z3Nw1s&callback=initMap">
     </script>
 
   </body>
